@@ -5,23 +5,26 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-public static class SwaggerController
+namespace AzureFunctions.Swagger.Presentation.Swagger
 {
-    [SwaggerIgnore]
-    [FunctionName("Swagger")]
-    public static Task<HttpResponseMessage> RunSwagger(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "Swagger/json")] HttpRequestMessage req,
-            [SwashBuckleClient] ISwashBuckleClient swashBuckleClient)
+    public static class SwaggerController
     {
-        return Task.FromResult(swashBuckleClient.CreateSwaggerDocumentResponse(req));
-    }
+        [SwaggerIgnore]
+        [FunctionName("Swagger")]
+        public static Task<HttpResponseMessage> RunSwagger(
+                [HttpTrigger(AuthorizationLevel.Function, "get", Route = "Swagger/json")] HttpRequestMessage req,
+                [SwashBuckleClient] ISwashBuckleClient swashBuckleClient)
+        {
+            return Task.FromResult(swashBuckleClient.CreateSwaggerDocumentResponse(req));
+        }
 
-    [SwaggerIgnore]
-    [FunctionName("SwaggerUi")]
-    public static Task<HttpResponseMessage> RunSwaggerUi(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "Swagger/ui")] HttpRequestMessage req,
-        [SwashBuckleClient] ISwashBuckleClient swashBuckleClient)
-    {
-        return Task.FromResult(swashBuckleClient.CreateSwaggerUIResponse(req, "swagger/json"));
+        [SwaggerIgnore]
+        [FunctionName("SwaggerUi")]
+        public static Task<HttpResponseMessage> RunSwaggerUi(
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "Swagger/ui")] HttpRequestMessage req,
+            [SwashBuckleClient] ISwashBuckleClient swashBuckleClient)
+        {
+            return Task.FromResult(swashBuckleClient.CreateSwaggerUIResponse(req, "swagger/json"));
+        }
     }
 }
