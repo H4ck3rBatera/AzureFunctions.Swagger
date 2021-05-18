@@ -1,2 +1,7 @@
 # AzureFunctions.Swagger
-Azure Functions Swagger
+
+Azure Functions
+
+.NET 5.0
+
+AzureExtensions.Swashbuckle
