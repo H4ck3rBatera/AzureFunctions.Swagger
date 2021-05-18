@@ -1,5 +1,5 @@
 # AzureFunctions.Swagger
 
 - Azure Functions
-- .NET 5.0
+- .NET Core 3.1
 - AzureExtensions.Swashbuckle
